@@ -13,7 +13,7 @@ class PublicationController extends Controller
      */
     public function index()
     {
-        $publications = Publication::all();
+        $publications = Publication::with("category", "comments")->get();
 
         return view("publication.index", ["publications"=> $publications]);
     }

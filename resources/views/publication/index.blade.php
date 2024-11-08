@@ -9,9 +9,16 @@
     <div>
         @foreach ($publications as $publication)
             <div>
-                <h2>{{$publication->title}}</h2>
+                <h1>{{$publication->title}}</h1>
                 <p>{{$publication->description}}</p>
-                <img src="{{asset("storage/upload/$publication->file")}}" alt="{{$publication->title}}">
+                <img width="500px" src="{{asset("storage/upload/$publication->file")}}" alt="{{$publication->title}}">
+                <p>Categoria: {{$publication->category->name}}</p>
+
+                <ul>
+                    @foreach ($publication->comments as $comment)
+                        <li>{{$comment->comment}}</li>
+                    @endforeach
+                </ul>
             </div>
         @endforeach
     </div>
